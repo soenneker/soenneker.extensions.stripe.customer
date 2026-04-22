@@ -1,18 +1,17 @@
-﻿using Soenneker.Tests.FixturedUnit;
-using Xunit;
+using Soenneker.Tests.HostedUnit;
 
 namespace Soenneker.Extensions.Stripe.Customer.Tests;
 
-[Collection("Collection")]
-public class StripeCustomerExtensionTests : FixturedUnitTest
+[ClassDataSource<Host>(Shared = SharedType.PerTestSession)]
+public class StripeCustomerExtensionTests : HostedUnitTest
 {
 
-    public StripeCustomerExtensionTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
+    public StripeCustomerExtensionTests(Host host) : base(host)
     {
 
     }
 
-    [Fact]
+    [Test]
     public void Default()
     {
 
