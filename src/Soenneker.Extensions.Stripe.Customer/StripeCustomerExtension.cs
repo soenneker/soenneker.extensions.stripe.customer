@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.Contracts;
+using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
 
 namespace Soenneker.Extensions.Stripe.Customer;
@@ -16,13 +16,13 @@ public static class StripeCustomerExtension
     /// <param name="value">The Stripe customer from which to retrieve the user identifier. Can be null.</param>
     /// <returns>The user identifier if present in the customer's metadata; otherwise, null.</returns>
     [Pure, MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static string? GetUserId(this global::Stripe.Customer? value)
+    public static string? GetUserId(this global::Soenneker.Stripe.OpenApiClient.Models.Customer? value)
     {
         if (value?.Metadata is null)
             return null;
 
-        return value.Metadata.TryGetValue(_userIdKey, out string? userId)
-            ? userId
+        return value.Metadata.AdditionalData.TryGetValue(_userIdKey, out object? userId)
+            ? userId?.ToString()
             : null;
     }
 }

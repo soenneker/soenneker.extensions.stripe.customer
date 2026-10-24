@@ -45,6 +45,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Stripe.net" Version="53.0.0" />
+        <PackageReference Include="Soenneker.Stripe.OpenApiClient" Version="4.0.140" />
     </ItemGroup>
 </Project>
+
